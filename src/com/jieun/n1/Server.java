@@ -16,33 +16,22 @@ public class Server {
 		ServerSocket ss=null;
 		Socket s = null;
 		try {
-			boolean check = true;
-			while(check) {
+			
+			//먼저 실행이 되어있어야함
 				ss = new ServerSocket(8282);
 				System.out.println("클라이언트의 요청을 기다리는 중");
-				s = ss.accept();
+				s = ss.accept();//클라이언트의 소켓정보를 받음
 
 				InputStream is = s.getInputStream();//byte
 				InputStreamReader ir = new InputStreamReader(is);//char
 				BufferedReader br = new BufferedReader(ir);
 				String str = br.readLine();
-
+				//정보를 받아서 출력해줌
 				System.out.println("Clinet Message: "+str);
+				
+			
 
-				OutputStream os = s.getOutputStream();
-				OutputStreamWriter ow = new OutputStreamWriter(os);
-				BufferedWriter bw = new BufferedWriter(ow);
-				System.out.println("서버로 보낼 메세지 입력");
-				Scanner sc = new Scanner(System.in);
-				str = sc.next();
-				bw.write(str);
-				bw.flush();
-				if(str.equals("exit")) {
-					check = false;
-				}
-			}
-
-		} catch (IOException e) {
+		} catch (IOException e) {//위에서 접속이 실패하면 exception으로 처리된다.
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
