@@ -28,7 +28,8 @@ public class Server {
 			s = ss.accept();//클라이언트의 소켓정보를 받음
 
 			InputStream is = s.getInputStream();//byte
-			InputStreamReader ir = new InputStreamReader(is);//char
+			InputStreamReader ir = new
+					InputStreamReader(is);//char
 			BufferedReader br = new BufferedReader(ir);
 			String str = br.readLine();
 			//정보를 받아서 출력해줌

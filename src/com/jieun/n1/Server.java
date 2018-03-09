@@ -29,6 +29,16 @@ public class Server {
 				//정보를 받아서 출력해줌
 				System.out.println("Clinet Message: "+str);
 				
+				OutputStream os = s.getOutputStream();//byte
+				OutputStreamWriter ow = new OutputStreamWriter(os);//char
+				BufferedWriter bw = new BufferedWriter(ow);
+				System.out.println("서버로 보낼 메세지 입력");
+				Scanner sss = new Scanner(System.in);
+				String strs = sss.next();
+				bw.write(str+"\r\n");
+				bw.flush();
+				
+				
 			
 
 		} catch (IOException e) {//위에서 접속이 실패하면 exception으로 처리된다.
